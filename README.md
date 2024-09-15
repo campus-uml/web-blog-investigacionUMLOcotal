@@ -229,10 +229,10 @@ Para implementar la funcionalidad de borrar un artículo cuando el usuario toca 
 ## Paso 1: Función de Borrado en `ArticuloService.tsx`
 En tu archivo de `ArticuloServices.tsx`,  añadir la función para enviar una solicitud `DELETE` a la API que borra el artículo.
 ```JavaScript
-> import axios from 'axios';
+import axios from 'axios';
 
 // Constante con la URL de la API
-> const API_URL = 'http://localhost:3000/blogs';
+const API_URL = 'http://localhost:3000/blogs';
 
 /** 
  * FUNCIÓN PARA OBTENER LOS ARTÍCULOS
