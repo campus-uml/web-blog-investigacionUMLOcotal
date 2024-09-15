@@ -55,7 +55,7 @@ const App = () => {
 
       </div>
         {/* Mostrar el formulario cuando el estado 'mostrarFormulario' sea true */}
-        {mostrarForm && <AgregarArticulo onArticleAdded={refrescarArticulos} />}
+        {mostrarForm && <AgregarArticulo onArticleAdded={refrescarArticulos} />}{/* onArticleAdded es invocada desde FormAgregarArticulos */}
 
 
 
