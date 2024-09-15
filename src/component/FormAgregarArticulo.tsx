@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-/* import { useState } from 'react';  */// Importamos useState
-/* import { AgregarArticulo } from '../services/articuloService'; */// Importamos la función AgregarArticulo
+import { AgregarArticulo as agregarArticuloAPI } from '../services/articuloService'; // Importamos la función AgregarArticulo
 
 // FUNCIÓN PARA AGREGAR UN ARTÍCULO
 const AgregarArticulo = ({ onArticleAdded }) => {
@@ -21,7 +20,8 @@ const AgregarArticulo = ({ onArticleAdded }) => {
             return;
         }
 
-        // Creamos un objeto con los datos del artículo
+        // Creamos un objeto con los datos del artículo 
+        // que fueron seteados dinámicamente en el formulario con el evento onChange
         const nuevoArticulo = {
             titulo,
             contenido,
@@ -32,7 +32,7 @@ const AgregarArticulo = ({ onArticleAdded }) => {
         try {
 
             // Llamamos a la función AgregarArticulo y le pasamos el nuevo artículo
-            const response = await AgregarArticulo(nuevoArticulo);
+            const response = await agregarArticuloAPI(nuevoArticulo);
 
             if (response) {
                 alert("Artículo agregado correctamente");
@@ -59,7 +59,7 @@ const AgregarArticulo = ({ onArticleAdded }) => {
                 <input
                     type="text"
                     value={titulo}
-                    onChange={(e) => setTitulo(e.target.value)}
+                    onChange={(e) => setTitulo(e.target.value)} //Actualizamos el estado titulo con el valor del input y lo pasamos al objeto nuevoArticulo;
                     placeholder='Ingrese el título del artículo'
                     required
                 />
@@ -68,7 +68,7 @@ const AgregarArticulo = ({ onArticleAdded }) => {
                 <label>Contenido</label>
                 <textarea
                     value={contenido}
-                    onChange={(e) => setContenido(e.target.value)}
+                    onChange={(e) => setContenido(e.target.value)} //Actualizamos el estado contenido con el valor del input y lo pasamos al objeto nuevoArticulo;
                     placeholder='Contenido del artículo'
                     required
                 />
@@ -78,7 +78,7 @@ const AgregarArticulo = ({ onArticleAdded }) => {
                 <input
                     type="date"
                     value={fecha}
-                    onChange={(e) => setFecha(e.target.value)}
+                    onChange={(e) => setFecha(e.target.value)} //Actualizamos el estado fecha con el valor del input y lo pasamos al objeto nuevoArticulo;
                     placeholder='Fecha del artículo'
                     required
                 />
@@ -88,7 +88,7 @@ const AgregarArticulo = ({ onArticleAdded }) => {
                 <input
                     type="text"
                     value={autor}
-                    onChange={(e) => setAutor(e.target.value)}
+                    onChange={(e) => setAutor(e.target.value)}//Actualizamos el estado autor con el valor del input y lo pasamos al objeto nuevoArticulo;
                     placeholder='Nombre del Autor'
                     required
                 />
