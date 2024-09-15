@@ -223,7 +223,7 @@ export const fetchArticles = async () => {
 Para implementar la funcionalidad de borrar un artículo cuando el usuario toca el botón de borrar en cada tarjeta, debes seguir estos pasos:
 
 1. Crear la función de borrado en el servicio (`ArticuloService.tsx`) que haga una solicitud `DELETE` a la API.
-2. Añadir el botón de borrar en cada artículo (`ArticleCard.tsx`).
+2. Añadir el botón de borrar en cada artículo (`ArticuloCard.tsx`).
 3. Actualizar la lista de artículos después de borrar uno en el componente principal (`App.tsx`).
 
 ## Paso 1: Función de Borrado en `ArticuloService.tsx`
@@ -253,7 +253,7 @@ En tu archivo de `ArticuloServices.tsx`,  añadir la función para enviar una so
   };
 ```
 
-## Paso 2: Añadir la Función de Borrado en el Componente de la Tarjeta de Artículo (`ArticleCard.tsx`)
+## Paso 2: Añadir la Función de Borrado en el Componente de la Tarjeta de Artículo (`ArticuloCard.tsx`)
 Ahora, en el componente donde está creada la tarjeta del artículo, pasar una función `onDelete` que recibirá el ID del artículo a eliminar.
 
 ```JavaScript
