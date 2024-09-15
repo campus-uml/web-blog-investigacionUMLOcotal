@@ -1,12 +1,16 @@
+import axios from 'axios';
+
+// Constante con la URL de la API
+const API_URL = 'http://localhost:3000/blogs';
+
 /** 
  * FUNCIÓN PARA OBTENER LOS ARTÍCULOS
  */
 
 export const fetchArticles = async () => {
     try {
-      const response = await fetch("http://localhost:3000/blogs"); // Llamada a la API
-      const data = await response.json(); // Obtenemos la respuesta en JSON
-      return data;
+      const response = await axios.get(API_URL); // Llamada a la API
+      return response.data; // Obtenemos la respuesta en JSON
     } catch (error) {
       console.error("Error al obtener los artículos:", error);
       return [];
@@ -17,22 +21,9 @@ export const fetchArticles = async () => {
    * FUNCIÓN PARA AGREGAR UN ARTÍCULO
    */ 
   export const AgregarArticulo = async (articulo) => {
-
     try {
-      const response = await fetch("http://localhost:3000/blogs", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(articulo),
-      });
-
-      if(!response.ok){
-        throw new Error("Error al agregar el artículo");
-      }
-
-      const data = await response.json();
-      return data;
+      const response = await axios.post(API_URL, articulo); // Llamada a la API
+      return response.data; // Obtenemos la respuesta en JSON
 
     } catch (error) {
       console.error("Error al agregar el artículo:", error);
@@ -46,16 +37,9 @@ export const fetchArticles = async () => {
 
   export const EliminarArticulo = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/blogs/${id}`, {
-        method: "DELETE",
-      });
 
-      if(!response.ok){
-        throw new Error("Error al eliminar el artículo"); // Lanzamos un error si la respuesta no es correcta
-      }
-
-      return true; // Retornamos true si se elimina el artículo correctamente
-
+      const response = await axios.delete(`${API_URL}/${id}`); // Llamada a la API
+      return true;// Retornamos true si se elimina el artículo correctamente
     } catch (error) {
       
       console.error("Error al eliminar el artículo:", error);
