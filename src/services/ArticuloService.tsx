@@ -1,3 +1,7 @@
+/** 
+ * FUNCIÓN PARA OBTENER LOS ARTÍCULOS
+ */
+
 export const fetchArticles = async () => {
     try {
       const response = await fetch("http://localhost:3000/blogs"); // Llamada a la API
@@ -9,7 +13,9 @@ export const fetchArticles = async () => {
     }
   };
   
-
+  /**
+   * FUNCIÓN PARA AGREGAR UN ARTÍCULO
+   */ 
   export const AgregarArticulo = async (articulo) => {
 
     try {
@@ -31,5 +37,28 @@ export const fetchArticles = async () => {
     } catch (error) {
       console.error("Error al agregar el artículo:", error);
       return null;
+    }
+  };
+
+  /**
+   * FUNCIÓN PARA ELIMINAR UN ARTÍCULO
+   */
+
+  export const EliminarArticulo = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/blogs/${id}`, {
+        method: "DELETE",
+      });
+
+      if(!response.ok){
+        throw new Error("Error al eliminar el artículo"); // Lanzamos un error si la respuesta no es correcta
+      }
+
+      return true; // Retornamos true si se elimina el artículo correctamente
+
+    } catch (error) {
+      
+      console.error("Error al eliminar el artículo:", error);
+      return false; // Retornamos false si hay un error al eliminar el artículo
     }
   };

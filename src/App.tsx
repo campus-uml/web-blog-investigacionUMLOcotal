@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'; // Importamos useState y useEffect
 import ArticuloCard from './component/ArticuloCard'; // Importamos el componente ArticuloCard
-import AgregarArticulo from './component/AgregarArticulo'; // Importamos el componente AgregarArticulo
-import { fetchArticles } from './services/articuloService'; // Importamos la función getArticulos
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import AgregarArticulo from './component/FormAgregarArticulo'; // Importamos el componente AgregarArticulo
+import { fetchArticles, EliminarArticulo } from './services/articuloService'; // Importamos la función getArticulos
 import './App.css'
 
 const App = () => {
@@ -13,7 +11,7 @@ const App = () => {
   // useEffect es un hook que se ejecuta después de que el componente se renderiza
   useEffect(() => {
     const getArticulos = async () => {
-      const response = await fetchArticles(); // Llamamos a la función fetchgrticles
+      const response = await fetchArticles(); // Llamamos a la función fetchArticles
       setArticulos(response); // Actualizamos el estado articulos con los articulos obtenidos
     };
 
@@ -23,10 +21,20 @@ const App = () => {
 
 
   // Función para refrescar la lista de los articulos
-const refrescarArticulos = async () =>{
-  const response = await fetchArticles(); // Llamamos a la función fetchArticles
-  setArticulos(response); // Actualizamos el estado articulos con los articulos obtenidos
-}
+  const refrescarArticulos = async () => {
+    const response = await fetchArticles(); // Llamamos a la función fetchArticles
+    setArticulos(response); // Actualizamos el estado articulos con los articulos obtenidos
+  }
+  
+  // Función para eliminar un artículo
+  const handleDelete = async (id) =>{
+    const success = await EliminarArticulo(id); // Llamamos a la función EliminarArticulo y le pasamos el id del artículo
+    if(success){
+      await refrescarArticulos(); 
+    }
+
+    return success;
+  };
 
 
 
@@ -34,20 +42,26 @@ const refrescarArticulos = async () =>{
 
     <div className="container">
       <div className="tituloPpal">
-      <h1>Blog Informativo: Universidad Martín Lutero</h1>
-
-            {/* Botón para mostrar/ocultar el formulario */}
-            <button onClick={() => setMostrarForm(!mostrarForm)}>
-        {mostrarForm ? "Ocultar formulario" : "Agregar nuevo artículo"}
-      </button>
-
-      {/* Mostrar el formulario cuando el estado 'mostrarFormulario' sea true */}
-      {mostrarForm && <AgregarArticulo onArticleAdded={refrescarArticulos} />}
-        
+        <h1>Blog Informativo: Universidad Martín Lutero</h1>
       </div>
+
+      <div className="ocultar-formulario-container">
+
+        {/* Botón para mostrar/ocultar el formulario */}
+        <button className='ocultar-formulario-btn' onClick={() => setMostrarForm(!mostrarForm)}>
+          {mostrarForm ? "Ocultar formulario" : "Agregar nuevo artículo"}
+        </button>
+
+
+      </div>
+        {/* Mostrar el formulario cuando el estado 'mostrarFormulario' sea true */}
+        {mostrarForm && <AgregarArticulo onArticleAdded={refrescarArticulos} />}
+
+
+
       <div className="articulos-list">
-        {articulos.map((articulo) =>( // Recorremos el array articulos y por cada articulo llamamos al componente ArticuloCard
-          <ArticuloCard key={articulo.id} articulo={articulo} /> // Pasamos el articulo como prop al componente ArticuloCard
+        {articulos.map((articulo) => ( // Recorremos el array articulos y por cada articulo llamamos al componente ArticuloCard
+          <ArticuloCard key={articulo.id} articulo={articulo} onDelete={handleDelete} /> // Pasamos el articulo como prop al componente ArticuloCard
         ))}
       </div>
     </div>
