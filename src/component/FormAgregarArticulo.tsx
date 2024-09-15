@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from 'react'; // Importamos useState
+import React, { useState } from 'react';
+/* import { useState } from 'react';  */// Importamos useState
 /* import { AgregarArticulo } from '../services/articuloService'; */// Importamos la función AgregarArticulo
 
 // FUNCIÓN PARA AGREGAR UN ARTÍCULO
