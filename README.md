@@ -1292,6 +1292,7 @@ form button:focus {
 
 ```
 
-### Imágenes de las Card
+### Imágenes de la Aplicación
 
+Apariencia de las Card mostrando los artículos
 ![](./assets/VistasCard.png)
