@@ -31,6 +31,19 @@ export const fetchArticles = async () => {
     }
   };
 
+/** 
+ * FUNCION PARA ACTUALIZAR UN ARTÍCULO
+ */
+  export const ActualizarArticulo = async (id, articulo) => {
+    try {
+      const response = await axios.put(`${API_URL}/${id}`, articulo); // Llamada a la API
+      return response.data; // Obtenemos la respuesta en JSON
+    } catch (error) {
+      console.log("Error al actualizar el artículo:", error);
+      return null;
+    }
+  }
+
   /**
    * FUNCIÓN PARA ELIMINAR UN ARTÍCULO
    */

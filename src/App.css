@@ -211,10 +211,22 @@ form button:focus {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-
 /* Botón de Agregar Artículo */
 .agregar-articulo-btn {
   background-color: #28a745; /* Color de fondo verde */
+  color: white; /* Color del texto blanco */
+  border: none; /* Elimina el borde predeterminado */
+  padding: 10px 20px; /* Espaciado interno del botón */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cursor cambia a pointer cuando se pasa sobre el botón */
+  transition: background-color 0.3s ease; /* Transición suave cuando cambia de color */
+  margin-top: 20px; /* Espacio superior */
+}
+/* Botón de Cancelar Artículo */
+.cancelar-articulo-btn {
+  background-color: #d60700; /* Color de fondo verde */
+  
   color: white; /* Color del texto blanco */
   border: none; /* Elimina el borde predeterminado */
   padding: 10px 20px; /* Espaciado interno del botón */
@@ -234,3 +246,32 @@ form button:focus {
   box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Sombra cuando está en foco */
 }
 
+.cancelar-articulo-btn:hover {
+  outline: none; /* Elimina el borde de enfoque predeterminado */
+  box-shadow: 0 0 5px rgba(145, 4, 4, 0.5); /* Sombra cuando está en foco */
+}
+
+/* Estilos para el formulario flotante */
+.form-flotante {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1000;
+  width: 90%; /* Ajustamos el ancho a 90% para pantallas pequeñas */
+  max-width: 600px; /* Máximo ancho para pantallas grandes */
+  min-width: 300px; /* Establecemos un ancho mínimo */
+  max-height: 90vh; /* Limita la altura del formulario */
+  overflow-y: auto; /* Habilita el scroll dentro del formulario si es necesario */
+}
+
+
+/* Ajustamos los botones en el formulario */
+.form-flotante button {
+  margin-right: 10px;
+  padding: 8px 16px;
+}

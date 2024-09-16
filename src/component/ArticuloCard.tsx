@@ -2,7 +2,7 @@ import React from 'react';
 import { MdEdit, MdDelete } from 'react-icons/md'; // Importamos los iconos de edición y eliminación
 import Swal from 'sweetalert2'; // Importamos sweetalert2 para mostrar alertas en pantalla
 
-const ArticuloCard = ({ articulo, onDelete }) => {
+const ArticuloCard = ({ articulo, onDelete, onEdit }) => {
     const { titulo, contenido, fecha, autor } = articulo; // destructuramos el objeto articulo
 
     // HandleDelete para manejar el borrado del artículo
@@ -31,6 +31,11 @@ const ArticuloCard = ({ articulo, onDelete }) => {
         });//Fin del método then
     };// Fin de la función handleDelete
 
+    //HandleEdit para manejar la edición del artículo
+    const handleEdit = () => {
+        onEdit(articulo); // Llamamos a la función onEdit y le pasamos el artículo
+    }
+
     return (
         <>
             <div className="article-card">
@@ -49,7 +54,7 @@ const ArticuloCard = ({ articulo, onDelete }) => {
 
                 <div className="article-card-footer">
                     <div className="article-actions">
-                        <button className="edit">
+                        <button className="edit" onClick={handleEdit}>
                             <MdEdit />
                         </button>
 
