@@ -1294,4 +1294,4 @@ form button:focus {
 
 ### Imágenes de las Card
 
-![](https://drive.google.com/drive/folders/169YrKyLDpreT88aKWqI_5UtLLI9-wI5YVDHdgd8O0B8vU57U3XAg64xHdNYrdEXnz3vHkegg)
+![](./assets/VistasCard.png)
