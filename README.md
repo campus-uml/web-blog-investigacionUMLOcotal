@@ -351,7 +351,7 @@ export default AgregarArticulo;
 
 ```
 
-## Integración del formulario y código de ordenamiento de lista de artículos `App.tsx`
+## Paso 3: Integración del formulario y código de ordenamiento de lista de artículos `App.tsx`
 
 ```JavaScript
 import { useState, useEffect } from 'react'; // Importamos useState y useEffect
