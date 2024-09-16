@@ -8,22 +8,23 @@ const App = () => {
   const [articulos, setArticulos] = useState([]); // Declaramos el estado articulos y la función setArticulos
   const [mostrarForm, setMostrarForm] = useState(false); // Declaramos el estado mostrarForm y la función setMostrarForm
 
-  // useEffect es un hook que se ejecuta después de que el componente se renderiza
+  //Función para cargar y ordenar los artículos de manera descendente
+  const cargarYOrdenarArticuos = async () => {
+    const response = await fetchArticles(); // Llamamos a la función fetchArticles  
+    //Ordenamos los artículos por fecha de forma descendente
+    const articulosOrdenados = response.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+    setArticulos(articulosOrdenados); // Actualizamos el estado articulos con los articulos obten
+  };
+
+   // useEffect es un hook que se ejecuta después de que el componente se renderiza
   useEffect(() => {
-    const getArticulos = async () => {
-      const response = await fetchArticles(); // Llamamos a la función fetchArticles
-      setArticulos(response); // Actualizamos el estado articulos con los articulos obtenidos
-    };
+    cargarYOrdenarArticuos(); // Llamamos a la función cargarYOrdenarArticuos
 
-    getArticulos(); // Llamamos a la función getArticulos
-
-  }, []); // El segundo argumento de useEffect es un array vacío, lo que significa que se ejecutará solo una vez
-
+  }, []); 
 
   // Función para refrescar la lista de los articulos
   const refrescarArticulos = async () => {
-    const response = await fetchArticles(); // Llamamos a la función fetchArticles
-    setArticulos(response); // Actualizamos el estado articulos con los articulos obtenidos
+    await cargarYOrdenarArticuos(); // Llamamos a la función cargarYOrdenarArticuos
   }
   
   // Función para eliminar un artículo
