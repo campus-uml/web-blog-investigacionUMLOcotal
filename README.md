@@ -1295,4 +1295,4 @@ form button:focus {
 ### Imágenes de la Aplicación
 
 Apariencia de las Card mostrando los artículos
-![](./assets/VistasCard.png)
+![](./src/assets/VistasCard.png)
