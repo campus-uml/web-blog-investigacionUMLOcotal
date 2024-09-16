@@ -16,7 +16,9 @@ const AgregarArticulo = ({ onArticleAdded, articuloEditar, onCancel }) => {// on
         if (articuloEditar) {
             setTitulo(articuloEditar.titulo);
             setContenido(articuloEditar.contenido);
-            setFecha(articuloEditar.fecha);
+            // Formateamos la fecha para que sea compatible con el input type="date"
+            const fechaFormateada = new Date(articuloEditar.fecha).toISOString().split('T')[0];
+            setFecha(fechaFormateada);
             setAutor(articuloEditar.autor);
         }
     }, [articuloEditar]);//El arreglo articuloEditar es una dependencia que se ejecuta cuando cambia el estado articuloEditar

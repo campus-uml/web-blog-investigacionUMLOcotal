@@ -1292,7 +1292,10 @@ form button:focus {
 
 ```
 
-### Imágenes de la Aplicación
+# Imágenes de la Aplicación
 
-Apariencia de las Card mostrando los artículos
+## Apariencia de las Card mostrando los artículos
 ![](./src/assets/VistasCard.png)
+
+## Vista del formulario para agregar un artículo nuevo
+![](./src/assets/FormNewArticle.png)
